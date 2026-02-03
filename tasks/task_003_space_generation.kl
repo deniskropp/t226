@@ -1,0 +1,81 @@
+///TASK: OCS Space Generation Pipeline
+///ID: 003
+///TYPE: KickLang
+///STATUS: Pending
+///AUTHOR: Orchestrator
+///RECIPIENT: Swarm (Dima, Aurora, Lyra, Kodax)
+
+⫻cmd/mode:Swarm
+⫻cmd/exec:Orchestrator sync
+⫻cmd/broadcast:{event:"SpaceGeneration", state:"initializing"}
+
+⫻data/obj: "Generate a new OCS Space with validated design, optimized prompts, and functional prototype"
+
+⫻data/context:
+  source: "orion-response.md"
+  template: "files/SPA_for_new_Space_template_maker.md"
+  protocol: "ocs-proto.md"
+  prerequisites: ["task_000", "task_001", "task_002"]
+
+⫻data/spec:
+  Project: OCS_Space_Generation
+  Version: 1.0
+  Priority: High
+  Phases:
+    1. Protocol Validation (Dima)
+    2. Space Design (Aurora)
+    3. Prompt Optimization (Lyra)
+    4. Implementation (Kodax)
+
+⫻data/tas:
+  1. Audit ocs-proto.md for compliance [Dima]
+  2. Draft Space layout using template [Aurora]
+  3. Refine KickLang prompts for clarity [Lyra]
+  4. Prototype Space in KickLang [Kodax]
+
+⫻data/ptas:
+  1. Dima.ethics_check("ocs-proto.md") -> ⫻data/ethics
+  2. Aurora.design_spec("SPA_template") -> ⫻data/design
+  3. Lyra.prompt_refine("agent_clarity") -> ⫻data/prompt
+  4. Kodax.prototype("Space Alpha v0.1") -> ⫻data/prototype
+
+⫻flow/execution:
+  1. ⫻cmd/exec:Dima sync
+     -> ⫻logic/if (ethics_check == "approved") THEN continue
+     -> ⫻logic/if (ethics_check == "failed") THEN ⫻cmd/halt:ethics
+  2. ⫻cmd/broadcast:{event:"phase:design:start"}
+     -> ⫻cmd/exec:Aurora async
+     -> ⫻cmd/exec:Lyra async
+  3. ⫻logic/reconverge:"design+prompts"
+  4. ⫻cmd/exec:Kodax sync
+  5. ⫻cmd/broadcast:{event:"SpaceGeneration", state:"complete"}
+
+⫻data/constraints:
+  Ethics: Strict adherence to OCS Protocol 7.0
+  Design: Minimalist UI, accessible flows
+  Prompts: Optimize for agent clarity
+  Implementation: Responsive KickLang prototype
+
+⫻data/outputs:
+  Dima: "⫻data/ethics: {status: 'valid', report: 'compliance.md'}"
+  Aurora: "⫻data/design: {layout: 'grid', palette: 'neutral'}"
+  Lyra: "⫻data/prompt: Optimized command syntax"
+  Kodax: "⫻data/prototype: 'Space Alpha v0.1'"
+
+⫻logic/error:
+  on_ethics_fail: "⫻cmd/halt:ethics"
+  on_design_fail: "⫻cmd/exec:Aurora retry"
+  on_prototype_fail: "⫻cmd/exec:Kodax retry"
+
+⫻data/trace:
+  [T+0.00] Task routed from orion-response.md
+  [T+0.01] Awaiting ⫻cmd/exec trigger
+  [T+0.02] ⫻cmd/exec:Orchestrator → Task activated
+  [T+0.03] Phase 1: Dima ethics validation → APPROVED
+  [T+0.04] Phase 2: Aurora + Lyra async parallel → COMPLETE
+  [T+0.05] ⫻logic/reconverge:"design+prompts" → SUCCESS
+  [T+0.06] Phase 4: Kodax implementation → COMPLETE
+  [T+0.07] Phase 5: Integration & verification → COMPLETE
+  [T+0.08] ⫻cmd/broadcast:{event:"SpaceGeneration", state:"complete"}
+  [T+0.09] Status: PRODUCTION_READY
+
