@@ -1,0 +1,31 @@
+///TASK: Space Alpha v0.1 Synthesis
+///ID: 004
+///TYPE: KickLang
+///STATUS: Pending
+///AUTHOR: Orchestrator
+///RECIPIENT: Swarm (Orchestrator, Aurora)
+
+⫻cmd/mode:Reporting
+⫻cmd/exec:Orchestrator sync
+⫻data/obj: "Synthesize orchestration report and docs into a narrative story (Zero -> <<story>>)"
+
+⫻data/context:
+  source: "docs/ORCHESTRATION_REPORT.md"
+  docs: ["docs/space_design_spec.md", "tasks/space_alpha_v0.1.kl"]
+  goal: "Create a narrative summary of the Space Alpha generation process"
+
+⫻data/tas:
+  1. Analyze Orchestration Report [Orchestrator]
+  2. Extract key design and implementation decisions [Aurora]
+  3. Synthesize narrative 'Zero -> Story' [Orchestrator]
+  4. Write to docs/SPACE_ALPHA_STORY.md [Orchestrator]
+
+⫻flow/execution:
+  1. ⫻cmd/read: "docs/ORCHESTRATION_REPORT.md"
+  2. ⫻cmd/read: "docs/space_design_spec.md"
+  3. ⫻logic/synthesize: {mode: "narrative", style: "storytelling"}
+  4. ⫻cmd/write: "docs/SPACE_ALPHA_STORY.md"
+  5. ⫻cmd/broadcast:{event:"StorySynthesis", state:"complete"}
+
+⫻data/outputs:
+  Orchestrator: "⫻data/artifact: 'docs/SPACE_ALPHA_STORY.md'"
