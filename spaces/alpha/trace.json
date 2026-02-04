@@ -1,0 +1,6 @@
+[
+  {"timestamp": "2026-02-04T16:55:00+01:00", "agent": "Aurora", "action": "DesignSpecRead", "status": "Success"},
+  {"timestamp": "2026-02-04T16:55:05+01:00", "agent": "Lyra", "action": "PromptGuideRead", "status": "Success"},
+  {"timestamp": "2026-02-04T16:56:00+01:00", "agent": "Kodax", "action": "PrototypeGenerated", "status": "Success"},
+  {"timestamp": "2026-02-04T16:56:05+01:00", "agent": "Dima", "action": "ComplianceAudit", "status": "Pass"}
+]
