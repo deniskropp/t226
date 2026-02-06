@@ -1,49 +1,15 @@
-# OCS Next Steps & Suggestions
+# System Suggestions
 
-> Generated: 2026-02-03T09:27:20+01:00
+## Recommended Actions
 
-## Immediate Actions
+### 1. Execute Task 004: Space Alpha Synthesis
+- **Reason**: To consolidate the "Zero to One" generation process into a readable narrative.
+- **Command**: `⫻cmd/exec:Orchestrator sync` (via Task 004)
+- **Outcome**: `docs/SPACE_ALPHA_STORY.md`
 
-### 1. Complete Task 001 Handoff
-> [!IMPORTANT]
-> Finalize the handoff checkpoint to transition from initialization to operational state.
+### 2. Verify Space Alpha v0.1
+- **Reason**: Ensure the prompt engineering and prototype assets align with `space_design_spec.md`.
+- **Method**: Review `space_alpha_v0.1.kl` execution flow.
 
-```
-⫻cmd/exec:Orchestrator sync
-⫻cmd/broadcast:{event:"HandoffComplete", state:"operational"}
-```
-
-### 2. Assign Domain Tasks
-Available agents ready for deployment:
-- **Aurora** → Design/Architecture work
-- **Kodax** → Code implementation
-- **Lyra** → Workflow structuring
-- **WePlan** → Strategic planning
-
-### 3. Consider Next Workflows
-| Workflow | Use Case |
-|----------|----------|
-| `/route` | Transform research into formal tasks |
-| `/execute` | Execute a specific KickLang task |
-| `/impl` | Pre-planning for implementation |
-| `/iter` | Post-planning and iteration |
-
----
-
-## Suggested Commands
-
-```kicklang
-# Option A: Execute pending handoff
-⫻cmd/exec:task_001_handoff_checkpoint.kl
-
-# Option B: Create new domain task
-⫻flow/route:{input:"<your_objective>"}
-
-# Option C: Activate predictive planning
-⫻cmd/mode:Predictive
-⫻cmd/exec:WePlan
-```
-
----
-
-**⫻data/state:** `{phase:"awaiting_user", readiness:"high"}`
+### 3. Review Orchestration Report
+- **Reason**: Confirm all architectural decisions are documented before finalizing the generic space template.
